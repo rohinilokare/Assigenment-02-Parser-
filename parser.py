@@ -1,14 +1,14 @@
 import re
 print("hello")
 print("****************** Language Identification Parser***********************")
-print("******************java******************")
-fname1 = "/home/rohini/Documents/treeni/hellojava.txt"
-fname2 = "/home/rohini/Documents/treeni/helloPHP.txt"
-fname3 = "/home/rohini/Documents/treeni/helloJavaScript.txt"
-fname4 = "/home/rohini/Documents/treeni/helloRuby.txt"
 
-#file=[fname1,fname2,fname3,fname4]
-file=[fname1]
+fname1 = "hellojava.txt"
+fname2 = "helloPHP.txt"
+fname3 = "helloJavaScript.txt"
+fname4 = "helloRuby.txt"
+
+file=[fname1,fname2,fname3,fname4]
+#file=[fname1]
 javapatterns = ['public\sclass\s\w*\s\{[^*]+\}',
 'public\sstatic\svoid\smain\(\String\[\]\s\args\)\s{[^*]+\}',
 'System.out.println\(\"[^*]+\"\)\;',
@@ -19,47 +19,28 @@ javapatterns = ['public\sclass\s\w*\s\{[^*]+\}',
 'protected',
 'default']
 
-rubypatterns = [
-]
+rubypatterns = ['puts','def\s\w*\s\:']
 
-phppatterns = [
-]
+phppatterns = ['<\?php','?>']
 
-javascriptpatterns = []
-
+javascriptpatterns = ['<!DOCTYPE']
 
 def checkLine(line):
+	java = re.findall("public\sclass\s\w*\s\{[^*]+\} | public\sstatic\svoid\smain\(\String\[\]\s\args\)\s{[^*]+\} | System.out.println\(\"[^*]+\"\)\; | class | public | private | protected | default | String | Scanner",line)
+	php = re.findall("<\?php | ?>", line)
+	ruby = re.findall("puts | require | WEBrick",line)
+	javascript = re.findall("<!DOCTYPE",line)
 
-
-	if java = re.findall()
-	#print (line)
-	if line in javapatterns:
-		for i in javapatterns:
-			java = re.findall(i, line)
-		#print java
-			if java:
-				print("languageis java")
-
-	elif  line in rubypatterns:
-		for i in rubypatterns:
-			ruby = re.findall(i, line)
-		#print java
-			if ruby:
-				print("languageis ruby")
-
-	elif line in javascriptpatterns:
-		for i in javascriptpatterns:
-			javascript = re.findall(i, line)
-		#print java
-			if javascript:
-				print("languageis javascript")
-
-	elif line in phppatterns:
-		for i in phppatterns:
-			php = re.findall(i, line)
-		#print java
-			if php:
-				print("languageis is PHP")
+	if java:
+		print ("langauage of line in a file is java")
+	elif php:
+		print ("language of line in a file is PHP")
+	elif javascript:
+		print("language of a line in a file is java script")
+	elif ruby:
+		print("language of a line in a file is ruby")
+	else:
+		print ("no language found")
 
 
 for i in file:
