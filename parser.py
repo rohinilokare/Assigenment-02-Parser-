@@ -1,3 +1,4 @@
+
 import re
 print("hello")
 print("****************** Language Identification Parser***********************")
@@ -23,7 +24,7 @@ rubypatterns = ['puts','def\s\w*\s\:']
 
 phppatterns = ['<\?php','?>']
 
-javascriptpatterns = ['<!DOCTYPE']
+javascriptpatterns = ['<!DOCTYPE','<html>','<button\s\=\w*']
 
 def checkLine(line):
 	java = re.findall("public\sclass\s\w*\s\{[^*]+\} | public\sstatic\svoid\smain\(\String\[\]\s\args\)\s{[^*]+\} | System.out.println\(\"[^*]+\"\)\; | class | public | private | protected | default | String | Scanner",line)
@@ -44,6 +45,7 @@ def checkLine(line):
 
 
 for i in file:
+	print("****************************************")
 	print("file is :  ",i)
 	with open(i) as f:
 		for line in f:
