@@ -4,9 +4,9 @@ print("hello")
 print("****************** Language Identification Parser***********************")
 
 fname1 = "hellojava.txt"
-fname2 = "helloPHP.txt"
-fname3 = "helloJavaScript.txt"
-fname4 = "helloRuby.txt"
+fname2 = "hellophp.txt"
+fname3 = "hellojavascript.txt"
+fname4 = "helloruby.txt"
 
 file=[fname1,fname2,fname3,fname4]
 #file=[fname1]
