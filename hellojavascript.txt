@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html>
-<body>
-
-<h2>My First JavaScript</h2>
-<h4>Hello World</h4>
-<!-- <button type="button"
-onclick="document.getElementById('demo').innerHTML = Date()">
-Click me to display Date and Time.</button> -->
-
-<p id="demo"></p>
-
-</body>
-</html> 
+function refreshForm(){
+  document.getElementById("label").value = '';
+  document.getElementById("color").value = '#000000';
+}
