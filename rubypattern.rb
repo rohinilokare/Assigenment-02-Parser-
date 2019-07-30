@@ -1,4 +1,5 @@
 class RubyPattern
+	# read all input file
 	def read_files(file)
 		pattern
 		@file = file
@@ -10,8 +11,7 @@ class RubyPattern
 	end
 
 	def pattern
-		@java_true_count = 0
-		@java_false_count = 0
+		@ruby_true_count = 0
 		@rubypatterns = ['puts','def\s\\w*\\s\\:']
 	end
 
@@ -19,7 +19,7 @@ class RubyPattern
 		for pattern in @rubypatterns
 			java = line.match(pattern)
 			if(!line.match(pattern).nil?)
-				@java_true_count = @java_true_count + 1
+				@ruby_true_count = @ruby_true_count + 1
 			end
 		end
 	end
@@ -29,16 +29,10 @@ class RubyPattern
 	end
 
 	def ruby_language()
-		# puts @java_true_count
-		# puts parser.line_count_hash[@file]
-		# parser.line_count_hash[@file] = parser.line_count_hash[@file] / 2
 		@line_count /= 2
-		if(@java_true_count > @line_count)
-			# puts 'language is java'
-			# puts '---------------------------------'
+		if(@ruby_true_count > @line_count)
 			return true
 		end
-
 	end
 
 end

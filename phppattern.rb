@@ -1,4 +1,5 @@
 class PhpPattern
+	# read all input file
 	def read_files(file)
 		pattern
 		@file = file
@@ -10,8 +11,7 @@ class PhpPattern
 	end
 
 	def pattern
-		@java_true_count = 0
-		@java_false_count = 0
+		@php_true_count = 0
 		@phppatterns = ['<\?php','echo']
 	end
 
@@ -19,7 +19,7 @@ class PhpPattern
 		for pattern in @phppatterns
 			java = line.match(pattern)
 			if(!line.match(pattern).nil?)
-				@java_true_count = @java_true_count + 1
+				@php_true_count = @php_true_count + 1
 			end
 		end
 	end
@@ -30,7 +30,7 @@ class PhpPattern
 
 	def php_language()
 		@line_count /= 2
-		if(@java_true_count > @line_count)
+		if(@php_true_count > @line_count)
 			return true
 		end
 	end

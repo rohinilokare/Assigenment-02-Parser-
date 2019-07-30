@@ -1,4 +1,5 @@
 class JavaPattern
+	# read all input file
 	def read_files(file)
 		pattern
 		@file = file
@@ -11,7 +12,6 @@ class JavaPattern
 
 	def pattern
 		@java_true_count = 0
-		@java_false_count = 0
 		@javapatterns = ['public\s+class\s\w*\s\{[^*]+\}',
 		'public\sstatic\svoid\smain\(\String\[\]\s\args\)\s{[^*]+\}',
 		'System.out.println\(\"[^*]+\"\)\;',
@@ -30,25 +30,17 @@ class JavaPattern
 				@java_true_count = @java_true_count + 1
 			end
 		end
-		# puts @java_true_count
 	end
 
 	def file_line_count
 			@line_count = `wc -l "#{@file}"`.strip.split(' ')[0].to_i
-			# puts @line_count
 	end
 
 	def java_language()
-		# puts @java_true_count
-		# puts parser.line_count_hash[@file]
-		# parser.line_count_hash[@file] = parser.line_count_hash[@file] / 2
 		@line_count /= 2
 		if(@java_true_count > @line_count)
-			# puts 'language is java'
-			# puts '---------------------------------'
 			return true
 		end
-
 	end
 
 end

@@ -13,6 +13,7 @@ class Parser
 		read_file
 	end
 
+	# read file one by one and pass for parsing
 	def read_file
 		for file in @files
 			puts '------------------------------'
